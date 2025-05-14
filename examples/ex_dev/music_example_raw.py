@@ -1,4 +1,4 @@
-from pingpongthread import PingPongThread
+from pingpong import PingPongThread
 import time
 
 PingPongThreadInstance = PingPongThread(number=1)

@@ -1,4 +1,4 @@
-from pingpongthread import PingPongThread
+from pingpong import PingPongThread
 import time
 import keyboard # keyboard==0.13.4
 

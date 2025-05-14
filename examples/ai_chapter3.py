@@ -1,7 +1,7 @@
 # ai_chapter3.py
 
 from example_base import GetParentPath # 상위 폴더 경로 가져오기
-from pingpongthread import PingPongThread
+from pingpong import PingPongThread
 import keyboard
 import time
 import datetime

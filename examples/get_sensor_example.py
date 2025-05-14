@@ -1,5 +1,5 @@
 from example_base import GetParentPath
-from pingpongthread import PingPongThread
+from pingpong import PingPongThread
 import keyboard # keyboard==0.13.4
 import time
 

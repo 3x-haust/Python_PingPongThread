@@ -1,5 +1,5 @@
 from example_base import GetParentPath
-from pingpongthread import PingPongThread
+from pingpong import PingPongThread
 import time
 
 PingPongThreadInstance = PingPongThread(number=1)   # 1개 로봇 연결

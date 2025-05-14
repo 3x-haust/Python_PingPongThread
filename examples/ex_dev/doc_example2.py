@@ -1,4 +1,4 @@
-from pingpongthread import PingPongThread
+from pingpong import PingPongThread
 
 PingPongThreadInstance = PingPongThread(number=2)   # 2개 로봇 연결
 PingPongThreadInstance.start()                      # 쓰레드 시작
