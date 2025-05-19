@@ -170,11 +170,15 @@ class ProcessProtocol():
         xx = Utils().getACCDataToDegreeMinus90To90fromByteData(self.buffer[15])
         yy = -Utils().getACCDataToDegreeMinus90To90fromByteData(self.buffer[16])
         zz = Utils().getACCDataToDegreeMinus90To90fromByteData(self.buffer[17])
-        # (자이로, 가속도가 바뀌었나?)
-        ### 근접 센서 값
+        # (자이로, 가속도가 바뀌었나?)        ### 근접 센서 값
         prox = self.buffer[18]
         ### AIN (외부 센서) 값
         ad = self.buffer[19]
+        ### 온도 센서 값 (AIN 값을 온도로 변환)
+        # AIN 값을 온도로 변환하는 공식 적용 (예: 값을 적절한 범위로 변환)
+        # 실제 변환 공식은 센서 스펙에 따라 조정 필요
+        temperature = (ad - 128) / 2.0 + 25.0  # 예시 변환 공식: 온도 = (ad - 128) / 2 + 25℃
+        
         ### status 등록
         self.transport._robot_status[group_id].processed_status.button[cube_ID] = button
         self.transport._robot_status[group_id].processed_status.sensor_gyro_xyz[cube_ID] = [x1, x2, x3]
@@ -183,6 +187,7 @@ class ProcessProtocol():
         self.transport._robot_status[group_id].processed_status.sensor_prox_old[cube_ID] = prox_old
         self.transport._robot_status[group_id].processed_status.sensor_prox[cube_ID] = prox
         self.transport._robot_status[group_id].processed_status.AIN[cube_ID] = ad
+        self.transport._robot_status[group_id].processed_status.sensor_temperature[cube_ID] = temperature
         ### print
         #print("CubeID:", cube_ID+1, ", Button:", button, ", Gyro:", [x1, x2, x3], ", Acc:", [xx, yy, zz], ", Prox:", prox, ", AIN:", ad)
         return None

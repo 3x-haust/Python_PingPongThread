@@ -122,9 +122,7 @@ class CubeOperation():
         self._button_before = button_value
 
         # Not_pressed: 0, Pressed: 1
-        return button_out
-
-    ### 현재 zyro 값 얻기 (robot_status로 부터)
+        return button_out    ### 현재 zyro 값 얻기 (robot_status로 부터)
     def get_current_gyro(self, cube_ID, group_id=None):
         group_id = CubeOperationUtils.proc_group_id(self._GenerateProtocolInstance._group_id, group_id)
         connection_number = self._robot_status[group_id].controller_status.connection_number
@@ -145,3 +143,18 @@ class CubeOperation():
         # yaw right: z +90, yaw left: z -90
         # star: x +90, square: x -90, triangle: y +90, circle: y -90
         return gyro_value
+        
+    ### 현재 온도 값 얻기 (robot_status로 부터)
+    def get_current_temperature(self, cube_ID, group_id=None):
+        group_id = CubeOperationUtils.proc_group_id(self._GenerateProtocolInstance._group_id, group_id)
+        connection_number = self._robot_status[group_id].controller_status.connection_number
+        cube_ID = CubeOperationUtils().process_cube_ID(cube_ID, connection_number)
+        if connection_number == 1 and cube_ID == 0xFF:
+            cube_ID = 0
+        if cube_ID == 0xFF:
+            temperature_value = self._robot_status[group_id].processed_status.sensor_temperature
+        else:
+            temperature_value = self._robot_status[group_id].processed_status.sensor_temperature[cube_ID]
+        if type(temperature_value) == type(None):
+            temperature_value = 0
+        return temperature_value

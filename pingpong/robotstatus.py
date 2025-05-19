@@ -42,9 +42,10 @@ class ProcessedStatus():
         ### sensor value status
         self.button = [None]*connection_number
         self.sensor_gyro_xyz = self.list_product_copy([[None, None, None]], connection_number)
-        self.sensor_acc_xyz = self.list_product_copy([[None, None, None]], connection_number)
+        self.sensor_acc_xyz = self.list_product_copy([[None, None, None]], connection_number)        
         self.sensor_prox = [0]*connection_number
         self.sensor_prox_old = [0]*connection_number
+        self.sensor_temperature = [0]*connection_number
         self.AIN = [None]*connection_number # External sensor
 
     def list_product_copy(self, input_list, number) -> list:

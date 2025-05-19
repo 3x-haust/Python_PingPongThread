@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="pingpongthread",
-    version="1.0.16",
+    version="1.1.0",
     author="3xhaust",
     author_email="s2424@e-mirim.hs.kr",
     description="sw동행 핑퐁",
